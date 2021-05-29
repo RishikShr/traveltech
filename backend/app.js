@@ -2,12 +2,16 @@
 const express  = require('express');
 const app = express()
 const mongoose = require('mongoose')
-const PORT = 6000
+
+ const PORT  = process.env.PORT || 6000;;
 const {MONGOURI} = require('./keys')
 
 require('./models/user')
 
 app.use(express.json())
+app.get('/home',(req,res)=>{
+    res.send('hello world')
+})
 
 app.use(require('./routes/auth'))
 mongoose.connect(MONGOURI , { useNewUrlParser: true,
@@ -21,5 +25,5 @@ mongoose.connection.on('error', (err)=>{
 })    
 
 app.listen(PORT,()=>{
-    console.log(`SERVER is at ${PORT}`)
+    console.log("port")
 })

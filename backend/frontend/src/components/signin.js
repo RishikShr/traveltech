@@ -2,6 +2,7 @@ import React,{useState,useContext,} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import {UserContext} from '../App'
 import M from 'materialize-css'
+import { url } from '../url'
 
 
 const SignIn  = ()=>{
@@ -14,7 +15,7 @@ const SignIn  = ()=>{
             M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
             return
         }
-        fetch("/signin",{
+        fetch(`${url}/signin`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"

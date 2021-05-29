@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {Link,useHistory} from 'react-router-dom'
 import M from 'materialize-css'
+import { url } from '../url';
 
 const Signup = () => {
     const history = useHistory();
@@ -16,7 +17,7 @@ const Signup = () => {
             M.toast({html: "invalid email",classes:"#c62828 red darken-3"})
             return 
         }
-        fetch('/signup',{
+        fetch(`${url}/signup`,{
             method:"post",
             headers:{
                 "Content-Type":"application/json"
